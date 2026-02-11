@@ -23,6 +23,7 @@ class Settings(BaseSettings):
 
     # X.com
     x_cookies_path: str = "./x_cookies.json"
+    x_cookies_json: str = ""  # JSON string of cookies (for Heroku)
 
     # Collection
     max_items_per_source: int = 10

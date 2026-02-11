@@ -94,20 +94,34 @@ class XBrowser:
         )
 
         # Load auth cookies if available
-        try:
-            with open(settings.x_cookies_path, "r") as f:
-                cookies = json.load(f)
-                # Normalize cookies for Playwright compatibility
-                normalized_cookies = self._normalize_cookies(cookies)
-                await context.add_cookies(normalized_cookies)
-                logger.info("Loaded X.com cookies from %s", settings.x_cookies_path)
-        except FileNotFoundError:
-            logger.warning(
-                "No X.com cookies found at %s — will browse as logged out",
-                settings.x_cookies_path,
-            )
-        except json.JSONDecodeError:
-            logger.error("Invalid JSON in X.com cookies file")
+        cookies = None
+        
+        # Try environment variable first (for Heroku)
+        if settings.x_cookies_json:
+            try:
+                cookies = json.loads(settings.x_cookies_json)
+                logger.info("Loaded X.com cookies from environment variable")
+            except json.JSONDecodeError:
+                logger.error("Invalid JSON in X_COOKIES_JSON environment variable")
+        
+        # Fall back to file (for local development)
+        if not cookies:
+            try:
+                with open(settings.x_cookies_path, "r") as f:
+                    cookies = json.load(f)
+                    logger.info("Loaded X.com cookies from %s", settings.x_cookies_path)
+            except FileNotFoundError:
+                logger.warning(
+                    "No X.com cookies found at %s — will browse as logged out",
+                    settings.x_cookies_path,
+                )
+            except json.JSONDecodeError:
+                logger.error("Invalid JSON in X.com cookies file")
+        
+        # Add cookies to context if loaded
+        if cookies:
+            normalized_cookies = self._normalize_cookies(cookies)
+            await context.add_cookies(normalized_cookies)
 
         self._page = await context.new_page()
 
