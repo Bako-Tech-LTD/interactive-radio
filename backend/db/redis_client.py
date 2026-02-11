@@ -31,7 +31,7 @@ async def init_redis() -> aioredis.Redis | None:
         )
         # Test connection
         await _redis.ping()
-        logger.info("Redis connected at %s", redis_url.split('@')[0] + '@***")
+        logger.info("Redis connected at %s", redis_url.split('@')[0] + '@***')
         return _redis
     except Exception as e:
         logger.warning("Redis unavailable (%s) — caching disabled", e)
