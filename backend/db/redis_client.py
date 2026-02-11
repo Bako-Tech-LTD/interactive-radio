@@ -14,14 +14,24 @@ async def init_redis() -> aioredis.Redis | None:
     """Initialize Redis connection. Returns None if unavailable."""
     global _redis
     try:
+        # Heroku Redis uses self-signed certificates, so we need to disable SSL verification
+        redis_url = settings.redis_url
+        ssl_cert_reqs = None
+        
+        if redis_url.startswith("rediss://"):
+            # Use SSL but don't verify certificates for Heroku Redis
+            import ssl
+            ssl_cert_reqs = ssl.CERT_NONE
+        
         _redis = aioredis.from_url(
-            settings.redis_url,
+            redis_url,
             decode_responses=True,
             socket_connect_timeout=3,
+            ssl_cert_reqs=ssl_cert_reqs,
         )
         # Test connection
         await _redis.ping()
-        logger.info("Redis connected at %s", settings.redis_url)
+        logger.info("Redis connected at %s", redis_url.split('@')[0] + '@***")
         return _redis
     except Exception as e:
         logger.warning("Redis unavailable (%s) — caching disabled", e)
