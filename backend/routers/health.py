@@ -28,6 +28,6 @@ async def health_check():
             "redis": redis_ok,
             "rss": bool(settings.rss_feeds.strip()),
             "reddit": bool(settings.reddit_client_id and settings.reddit_client_secret),
-            "twitter": os.path.exists(settings.x_cookies_path),
+            "twitter": bool(settings.x_cookies_json or os.path.exists(settings.x_cookies_path)),
         },
     }
