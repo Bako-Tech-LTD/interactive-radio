@@ -14,14 +14,14 @@
     "build:ios:staging": "eas build --platform ios --profile staging",
     "build:android:staging": "eas build --platform android --profile staging",
     "build:staging": "eas build --profile staging",
-    "build": "eas build --profile production"
+    "build": "eas build --profile production",
+     "publish:staging": "eas update --branch staging --platform ios && eas update --branch staging --platform android",
+    "publish:prod": "eas update --branch production --platform ios && eas update --branch production --platform android"
   },
   "dependencies": {
-    "@config-plugins/react-native-webrtc": "^13.0.0",
     "@elevenlabs/react-native": "^0.5.10",
     "@expo/vector-icons": "^15.0.3",
-    "@livekit/react-native": "^2.9.6",
-    "@livekit/react-native-webrtc": "^137.0.2",
+    "@lottiefiles/dotlottie-react": "^0.13.5",
     "@react-navigation/native": "^7.1.8",
     "expo": "~54.0.33",
     "expo-av": "~16.0.8",
@@ -33,8 +33,8 @@
     "expo-router": "~6.0.23",
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
+    "expo-updates": "~29.0.16",
     "expo-web-browser": "~15.0.10",
-    "livekit-client": "^2.17.1",
     "lottie-react-native": "^7.3.5",
     "lucide-react-native": "^0.563.0",
     "react": "19.1.0",

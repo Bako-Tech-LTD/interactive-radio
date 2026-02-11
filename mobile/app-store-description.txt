@@ -1,0 +1,45 @@
+# APP STORE CONNECT — APP INFORMATION
+# Copy each block into the matching field in App Store Connect.
+
+# —————————————————————————————————————————
+# SUBTITLE (max 30 characters)
+# —————————————————————————————————————————
+# News briefing you can talk to
+
+# —————————————————————————————————————————
+# PROMOTIONAL TEXT (max 170 characters, can be updated anytime without new version)
+# —————————————————————————————————————————
+# Tap to start. An AI host gathers news from your sources and reads it aloud. Ask questions, go deeper, or change topics by speaking. Radio you can talk back to.
+
+# —————————————————————————————————————————
+# DESCRIPTION (max 4000 characters)
+# —————————————————————————————————————————
+Interactive Radio turns your news into a live, voice-powered briefing. Tap to start—an AI host collects the latest stories from your chosen sources, then reads and summarizes them aloud. Ask questions, go deeper on any topic, or switch subjects anytime by speaking. It’s radio you can talk back to.
+
+FEATURES
+
+• Voice-first news briefings — Tap once to connect. The AI agent gathers news, then delivers a spoken briefing. No reading required.
+
+• Choose your sources — In Settings, turn on RSS feeds (e.g. BBC, Reuters), X (Twitter), or Reddit. Only enabled sources are used for your briefing.
+
+• Talk to your briefing — Ask follow-up questions, request more detail, or change topics during the session. The agent responds in real time.
+
+• Topics timeline — See which topics were covered and when. Handy for revisiting stories or checking what you’ve heard.
+
+• Simple controls — One tap to start, one tap to stop. Status messages show when the app is collecting news, briefing, or ready for your input.
+
+• Works in the background — Audio continues when the app is in the background so you can listen while you do something else.
+
+• Connection awareness — The app checks backend availability and shows a clear message if the service is offline, with an option to retry.
+
+HOW IT WORKS
+
+1. Enable at least one news source in Settings (News Briefing tab → Settings).
+2. On the News Briefing tab, tap the orb to start.
+3. The agent collects news, then reads your briefing aloud.
+4. Speak anytime to ask questions, dig deeper, or change topics.
+5. Tap “Tap to stop” when you’re done.
+
+Interactive Radio is for anyone who wants news on the go without staring at a screen—commuters, runners, or anyone who prefers listening. Your briefing, your sources, your conversation.
+
+Requires an internet connection. Microphone access is used for voice interaction with the AI agent.

@@ -26,7 +26,7 @@ export function RadioPlayer() {
   const [isCheckingHealth, setIsCheckingHealth] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
 
-  
+
   // Animation values
   const pulseAnim = useRef(new Animated.Value(0)).current;
   const rotateAnim = useRef(new Animated.Value(0)).current;
@@ -118,7 +118,8 @@ export function RadioPlayer() {
         dispatch({ type: "RESET" });
         setRetryCount((prev) => prev + 1);
       }
-      await start();
+
+      !showError && await start();
     }
   };
 
@@ -163,38 +164,25 @@ export function RadioPlayer() {
 
   return (
     <View style={styles.container}>
-      {/* Top status */}
-      <View style={styles.topSection}>
-        {/* <Text style={[styles.statusText, showError && styles.errorText]}>
-          {getStatusText()}
-        </Text> */}
-        {/* {state === "asking_topics" && (
-          <View style={styles.listeningBadge}>
-            <Mic size={14} color="#6366f1" />
-            <Text style={styles.listeningText}>Listening</Text>
-          </View>
-        )} */}
-      </View>
 
       {/* Orb container */}
       <View style={styles.orbContainer}>
         {/* Lottie speech animation - always visible, animates when speaking */}
         <TouchableOpacity
-          onPress={!isActive ? handlePress : undefined}
+          onPress={handlePress}
           activeOpacity={0.9}
           disabled={state === "starting" || isActive}
           style={styles.animationTouchable}
         >
           <SpeechAnimation isPlaying={isSpeaking} size={ORB_SIZE} isVisible={true} />
-          
-          {/* Text overlay */}
-          <View style={styles.textOverlay}>
+
+          <TouchableOpacity style={styles.textOverlay} onPress={handlePress}>
             <Text style={styles.orbText}>{getStatusText()}</Text>
-          </View>
+          </TouchableOpacity>
         </TouchableOpacity>
 
         {/* Stop button outside the circle */}
-        {/* {isActive && (
+        {isActive && (
           <TouchableOpacity
             style={styles.stopButton}
             onPress={handlePress}
@@ -202,7 +190,7 @@ export function RadioPlayer() {
           >
             <Text style={styles.stopButtonText}>Tap to stop</Text>
           </TouchableOpacity>
-        )} */}
+        )}
       </View>
 
       {/* Bottom section */}
@@ -275,7 +263,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: ORB_SIZE + 120,
-    height: ORB_SIZE + 120,
+    height: ORB_SIZE + 100,
   },
   animationTouchable: {
     width: ORB_SIZE,
@@ -304,6 +292,7 @@ const styles = StyleSheet.create({
   },
   stopButton: {
     position: "absolute",
+    bottom: 50,
     paddingHorizontal: 24,
     paddingVertical: 12,
     borderRadius: 24,

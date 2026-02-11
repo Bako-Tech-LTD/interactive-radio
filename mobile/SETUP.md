@@ -1,12 +1,11 @@
-c# Mobile App Setup Guide
+# Mobile App Setup Guide
 
 ## Issue
-The `@livekit/react-native` and `@elevenlabs/react-native` packages require native modules that cannot run in Expo Go. You need to create a **development build**.
+The `@elevenlabs/react-native` package requires native modules that cannot run in Expo Go. You need to create a **development build**.
 
 ## What Was Done
-1. ✅ Installed `@config-plugins/react-native-webrtc` for WebRTC support
-2. ✅ Updated `app.json` with WebRTC config plugin
-3. ✅ Installed `expo-dev-client` for custom development builds
+1. ✅ Installed `expo-dev-client` for custom development builds
+2. ✅ Configured app.json for native audio permissions
 
 ## Next Steps
 
@@ -65,8 +64,7 @@ If you don't want to set up local build tools:
 ## Why This Is Needed
 
 - **Expo Go** only supports a limited set of pre-built native modules
-- `@livekit/react-native` requires custom native code for WebRTC functionality
-- `@elevenlabs/react-native` depends on LiveKit for audio streaming
+- `@elevenlabs/react-native` requires custom native code for audio streaming
 - A **development build** includes your custom native dependencies
 
 ## Running After Build

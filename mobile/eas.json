@@ -12,10 +12,26 @@
       "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "channel": "production"
+    },
+    "staging": {
+      "autoIncrement": true,
+      "channel": "staging"
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "track": "production",
+        "releaseStatus": "completed"
+      }
+    },
+      "staging": {
+        "android": {
+          "track": "internal",
+          "releaseStatus": "draft"
+        }
+      }
   }
 }
