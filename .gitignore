@@ -10,6 +10,7 @@ venv/
 dist/
 build/
 backend/README.md
+backend/deploy.sh
 
 # Node
 node_modules/
