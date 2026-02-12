@@ -1,16 +1,11 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/components/useColorScheme";
 import { RadioProvider } from "@/contexts/RadioContext";
 import { ElevenLabsProvider } from "@elevenlabs/react-native";
 
@@ -46,8 +41,6 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   // Background audio configuration
   useEffect(() => {
     const configureAudio = async () => {
@@ -72,7 +65,7 @@ function RootLayoutNav() {
 
   return (
     <ElevenLabsProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={DefaultTheme}>
         <RadioProvider>
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

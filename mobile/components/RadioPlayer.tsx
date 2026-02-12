@@ -148,17 +148,6 @@ export function RadioPlayer() {
     }
   };
 
-  // Interpolations
-  const pulseScale = pulseAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1, isSpeaking ? 1.12 : 1.06],
-  });
-
-  const rotate = rotateAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: ["0deg", "360deg"],
-  });
-
   const showError = state === "error" || backendOnline === false;
   const showRetry = backendOnline === false && !isActive;
 

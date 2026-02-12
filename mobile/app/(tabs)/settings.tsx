@@ -14,11 +14,11 @@ const SOURCE_INFO: Record<
   },
   twitter: {
     label: "X (Twitter)",
-    description: "Posts from X.com (requires cookies auth on backend)",
+    description: "Posts from X.com",
   },
   reddit: {
     label: "Reddit",
-    description: "Posts from popular subreddits (requires API keys)",
+    description: "Posts from popular subreddits",
   },
 };
 
