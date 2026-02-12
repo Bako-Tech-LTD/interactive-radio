@@ -9,6 +9,7 @@ venv/
 *.egg-info/
 dist/
 build/
+backend/README.md
 
 # Node
 node_modules/
